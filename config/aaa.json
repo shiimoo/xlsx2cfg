@@ -1,0 +1,13 @@
+{
+    "src_path": "D:\\shimo\\xlsx2cfg\\example\\src",
+    "out_list": [
+        {
+            "out_path": "D:\\shimo\\xlsx2cfg\\example\\out\\json",
+            "code_type": "json"
+        },
+        {
+            "out_path": "D:\\shimo\\xlsx2cfg\\example\\out\\json",
+            "code_type": "json"
+        }
+    ]
+}

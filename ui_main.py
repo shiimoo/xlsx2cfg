@@ -35,6 +35,7 @@ class WinGUI(Tk):
             self.tk_frame_m4m4me4q
         )
         self.tk_label_src_path = self.__tk_label_src_path(self.tk_frame_m4m4me4q)
+        self.tk_button_save_cfg = self.__tk_button_save_cfg(self.tk_frame_m4m4me4q)
         self.tk_table_out_list = self.__tk_table_out_list(self.tk_frame_m4m4me4q)
         self.tk_label_m4s8b8pm = self.__tk_label_m4s8b8pm(self.tk_frame_m4m4me4q)
         self.tk_select_box_choose_code_type = self.__tk_select_box_choose_code_type(
@@ -165,7 +166,7 @@ class WinGUI(Tk):
         label = Label(
             parent,
             text="...",
-            anchor="center",
+            anchor="w",
         )
         label.place(x=140, y=10, width=350, height=30)
         return label
@@ -264,6 +265,15 @@ class WinGUI(Tk):
         progressbar.place(x=10, y=10, width=480, height=30)
         return progressbar
 
+    def __tk_button_save_cfg(self, parent):
+        btn = Button(
+            parent,
+            text="按钮",
+            takefocus=False,
+        )
+        btn.place(x=330, y=10, width=140, height=30)
+        return btn
+
     def __tk_table_out_log(self, parent):
         # 表头字段 表头宽度
         columns = {"LV": 71, "msg": 407}
@@ -295,6 +305,7 @@ class Win(WinGUI):
         self.tk_select_box_select_cfg.bind("<Button-1>", self.ctl.refresh_all_cfg)
         self.tk_select_box_select_cfg.bind("<<ComboboxSelected>>", self.ctl.select_cfg)
         self.tk_button_choose_src_path.bind("<Button-1>", self.ctl.choose_src_path)
+        self.tk_button_save_cfg.bind("<Button-1>", self.ctl.save_cfg)
         self.tk_table_out_list.bind("<<TreeviewSelect>>", self.ctl.edit_out)
         self.tk_select_box_choose_code_type.bind(
             "<Button-1>", self.ctl.refresh_code_type
@@ -351,6 +362,9 @@ class Controller:
         # 如果用户选择了文件夹，则打印路径
         if folder_selected:
             self.ui.tk_label_src_path.config(text=folder_selected)
+
+    def save_cfg(self, evt):
+        print("<Button-1>事件未处理:", evt)
 
     def edit_out(self, evt):
         select_info = self.ui.tk_table_out_list.selection()
